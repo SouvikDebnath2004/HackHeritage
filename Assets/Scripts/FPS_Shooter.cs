@@ -19,7 +19,7 @@ public class FPS_Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+              
     }
 
     void shootProjectiles()
