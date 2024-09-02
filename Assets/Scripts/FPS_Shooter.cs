@@ -37,7 +37,7 @@ public class FPS_Shooter : MonoBehaviour
 
     private void InstantiateProjectile(Transform firePoint)
     {
-        var projectile = Instantiate(Attack[0], firePoint.position, Quaternion.identity) as GameObject;      
+        var projectile = Instantiate(Attack[0], firePoint.position, transform.rotation.y-90f) as GameObject;      
     }
 
     public void Fire()
