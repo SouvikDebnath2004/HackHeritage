@@ -19,7 +19,10 @@ public class FPS_Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-              
+        if (Input.GetMouseButtonDown(0))
+        {
+            shootProjectiles();
+        }
     }
 
     void shootProjectiles()
@@ -38,8 +41,8 @@ public class FPS_Shooter : MonoBehaviour
     private void InstantiateProjectile(Transform firePoint)
     {
         var projectile = Instantiate(Attack[0], firePoint.position, Quaternion.identity) as GameObject;      
-    }
-
+    }   
+    
     public void Fire()
     {
         shootProjectiles();
