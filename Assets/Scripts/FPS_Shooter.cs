@@ -8,6 +8,7 @@ public class FPS_Shooter : MonoBehaviour
     public Camera camera;
     private Vector3 destination;
     [SerializeField] public GameObject[] Attack;
+    [SerializeField] public float projectileSpeed = 1.0f;
     public Transform CenterFirePoint;
 
     // Start is called before the first frame update
@@ -40,7 +41,8 @@ public class FPS_Shooter : MonoBehaviour
 
     private void InstantiateProjectile(Transform firePoint)
     {
-        var projectile = Instantiate(Attack[0], firePoint.position, Quaternion.identity) as GameObject;      
+        var projectileObj = Instantiate(Attack[0], firePoint.position, Quaternion.identity) as GameObject;
+        projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * projectileSpeed;
     }   
     
     public void Fire()
