@@ -372,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400142, guid: 7e35bd5abf60a234798b95ef300f64e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400142, guid: 7e35bd5abf60a234798b95ef300f64e2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -590,7 +590,7 @@ PrefabInstance:
     - target: {fileID: 184754696075308675, guid: 75e1724d6739d834da0c7d8b4aa2deff, type: 3}
       propertyPath: Attack.Array.data[0]
       value: 
-      objectReference: {fileID: 1789553320}
+      objectReference: {fileID: 2093122886424293448, guid: 8aa677afedd658843be7f540ba2e103f, type: 3}
     - target: {fileID: 1011828599352159427, guid: 75e1724d6739d834da0c7d8b4aa2deff, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -217.5
