@@ -864,6 +864,10 @@ PrefabInstance:
       value: FireBulletPAT
       objectReference: {fileID: 0}
     - target: {fileID: 4655266973123132756, guid: 4071bbd291fb70041b54801020372642, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655266973123132756, guid: 4071bbd291fb70041b54801020372642, type: 3}
       propertyPath: m_TagString
       value: Bullet
       objectReference: {fileID: 0}
