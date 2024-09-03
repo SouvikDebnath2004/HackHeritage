@@ -4993,7 +4993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3120900332248552988
 Transform:
   m_ObjectHideFlags: 0
@@ -5071,3 +5071,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65b855f9cb7bbe4fa504655f23f269c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collided: 0
+  FireBulletImpact: {fileID: 162584487599433031, guid: 39f852c28f9c3fd45a427c24f3564ba7, type: 3}
