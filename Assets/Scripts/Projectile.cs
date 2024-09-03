@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public void OnCollisonEnter()
+    public bool collided;
+    private void OnCollisionEnter(Collision collision)
     {
-        //Destroy(this).GameObject;
+        if(collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
+        {
+            collided = true;
+            Destroy(this.gameObject);
+        }
     }
 }
