@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class FPS_Shooter : MonoBehaviour
 {
-    public Camera camera;
     private Vector3 destination;
+
     [SerializeField] public GameObject[] Attack;
     [SerializeField] public float projectileSpeed = 1.0f;
+    [SerializeField] public float fireRate = 3f;
+
+    public Camera camera; 
     public Transform CenterFirePoint;
+    private float timeOfFire;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +24,9 @@ public class FPS_Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetButton("Fire1") && Time.time >= timeOfFire)
         {
+            timeOfFire = Time.time + 1 / fireRate;
             shootProjectiles();
         }
     }
@@ -47,7 +52,11 @@ public class FPS_Shooter : MonoBehaviour
     
     public void Fire()
     {
-        shootProjectiles();
+        if(Time.time >= timeOfFire)
+        {
+            timeOfFire = Time.time + 1 / fireRate;
+            shootProjectiles();
+        }        
     }
 
 }

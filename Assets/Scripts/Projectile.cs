@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool collided;
+    private void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
+        {
+            collided = true;
+            Destroy(this.gameObject);
+        }
     }
 }
