@@ -11,10 +11,10 @@ public class Projectile : MonoBehaviour
         if(collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
         {
             collided = true;
-            //var impact = Instantiate(FireBulletImpact, collision.contacts[0].point,Quaternion.identity) as GameObject;
+            var impact = Instantiate(FireBulletImpact, collision.contacts[0].point,Quaternion.identity) as GameObject;
             Destroy(this.gameObject);
 
-            //Destroy(impact,2f);
+            Destroy(FireBulletImpact,2f);
         }
     }
 }
