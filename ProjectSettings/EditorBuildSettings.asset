@@ -6,8 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scene/Lobby.unity
     guid: 80ab3e4fa4ede944eaa58aa0c3effaba
+=======
+    path: Assets/Scene/Sample Scene.unity
+    guid: e6d99aad7379a1d42a740a623d5f5247
+  - enabled: 1
+    path: Assets/Scene/Earth.unity
+    guid: 78abc2d6cb6d1a3429403cd6199e0a3b
+>>>>>>> d12f95956d2aca2f16ee575891edcde36fb59310
   - enabled: 1
     path: Assets/Scene/Earth.unity
     guid: 78abc2d6cb6d1a3429403cd6199e0a3b

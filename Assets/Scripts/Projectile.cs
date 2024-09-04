@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
         {
             collided = true;
             var impact = Instantiate(FireBulletImpact, collision.contacts[0].point,Quaternion.identity) as GameObject;
-            Destroy(this.gameObject);
+            Destroy(gameObject);
 
             Destroy(FireBulletImpact,2f);
         }
