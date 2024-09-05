@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class FPS_Shooter : MonoBehaviour
 {
+    public int health;
+    public int attackDamage;
+
     private Vector3 destination;
 
     [SerializeField] public GameObject[] Attack;
@@ -28,6 +31,20 @@ public class FPS_Shooter : MonoBehaviour
         {
             timeOfFire = Time.time + 1 / fireRate;
             shootProjectiles();
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+    }
+
+    public void DealDamage(GameObject target)
+    {
+        var atm = target.GetComponent<AttributesManager>();
+        if (atm != null)
+        {
+            atm.TakeDamage(attack);
         }
     }
 
