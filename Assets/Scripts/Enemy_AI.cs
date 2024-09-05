@@ -17,6 +17,11 @@ public class Enemy_AI : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
+    public float timer = 5;
+    private float bulletTime;
+    public Transform spawnPoint;
+    public float enemySpeed;
+
     public float timeBWAttacks;
     public bool alreadyAttacked;
 
@@ -79,9 +84,7 @@ public class Enemy_AI : MonoBehaviour
         if(!alreadyAttacked)
         {
             //Attack Code
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            ShootAtPlayer();
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBWAttacks);
@@ -91,5 +94,15 @@ public class Enemy_AI : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    void ShootAtPlayer()
+    {
+        bulletTime -= Time.deltaTime;
+        bulletTime = timer;
+        GameObject bulletObj = Instantiate(projectile, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+        Rigidbody bulletRigidbody = bulletObj.GetComponent<Rigidbody>();
+        bulletRigidbody.AddForce(bulletRigidbody.transform.forward * enemySpeed);
+        Destroy(bulletRigidbody, 5f);
     }
 }
