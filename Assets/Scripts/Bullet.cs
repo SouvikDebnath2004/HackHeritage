@@ -5,8 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public GameObject FireBulletImpact;
-    public AttributesManager enemyAtm;
-    public AttributesManager playerAtm;
+   
     public bool collided;
 
     private void OnCollisionEnter(Collision collision)
@@ -14,9 +13,8 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Player" && !collided)
         {
             collided = true;
-            var impact = Instantiate(FireBulletImpact, collision.contacts[0].point, Quaternion.identity) as GameObject;
-            Destroy(gameObject);
-            enemyAtm.DealDamage(playerAtm.gameObject);
+            var impact = Instantiate(FireBulletImpact, collision.contacts[0].point, Quaternion.identity) as GameObject;           
+            Destroy(this.gameObject);            
             Destroy(FireBulletImpact, 2f);
         }
     }

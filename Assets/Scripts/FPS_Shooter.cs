@@ -2,14 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class FPS_Shooter : MonoBehaviour
 {
     public int health;
     public int attackDamage;
+    private int currenthealth;
+
+    public AttributesManager enemyAtm;
+    public AttributesManager playerAtm;
 
     private Vector3 destination;
 
+    [SerializeField] private Image healthImg;
     [SerializeField] public GameObject[] Attack;
     [SerializeField] public float projectileSpeed = 1.0f;
     [SerializeField] public float fireRate = 3f;
@@ -34,9 +41,23 @@ public class FPS_Shooter : MonoBehaviour
         }
     }
 
+    public void UpdateHealthBar(float health, float currenthealth)
+    {
+        healthImg.fillAmount = currenthealth / health;
+    }
+
     public void TakeDamage(int amount)
     {
-        health -= amount;
+        currenthealth =health - amount;
+        if(currenthealth < 0)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            UpdateHealthBar(health, currenthealth);
+            Debug.Log("Current" +currenthealth);
+        }
     }
 
     public void DealDamage(GameObject target)
@@ -59,6 +80,7 @@ public class FPS_Shooter : MonoBehaviour
             destination = ray.GetPoint(1000);
 
         InstantiateProjectile(CenterFirePoint);
+        playerAtm.DealDamage(enemyAtm.gameObject);
     }
 
     private void InstantiateProjectile(Transform firePoint)
