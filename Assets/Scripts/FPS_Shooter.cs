@@ -44,7 +44,7 @@ public class FPS_Shooter : MonoBehaviour
         var atm = target.GetComponent<AttributesManager>();
         if (atm != null)
         {
-            atm.TakeDamage(attack);
+            atm.TakeDamage(attackDamage);
         }
     }
 
