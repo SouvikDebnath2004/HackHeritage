@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class Enemy_AI : MonoBehaviour
 {
+   
     public NavMeshAgent agent;
     public Transform player;
     public GameObject projectile;
@@ -104,5 +105,6 @@ public class Enemy_AI : MonoBehaviour
         Rigidbody bulletRigidbody = bulletObj.GetComponent<Rigidbody>();
         bulletRigidbody.AddForce(bulletRigidbody.transform.forward * enemySpeed);
         Destroy(bulletRigidbody, 5f);
+       
     }
 }
