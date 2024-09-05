@@ -6,8 +6,8 @@ public class Projectile : MonoBehaviour
 {
     public bool collided;
     public GameObject FireBulletImpact;
-    public AttributesManager enemyAtm;
-    public AttributesManager playerAtm;
+    
+     
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -15,8 +15,8 @@ public class Projectile : MonoBehaviour
         {
             collided = true;
             var impact = Instantiate(FireBulletImpact, collision.contacts[0].point,Quaternion.identity) as GameObject;
-            Destroy(gameObject);
-            playerAtm.DealDamage(enemyAtm.gameObject);
+           Destroy(this.gameObject);
+                       
             Destroy(FireBulletImpact,2f);
         }
     }
