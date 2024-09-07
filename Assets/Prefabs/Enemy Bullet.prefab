@@ -147,6 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireBulletImpact: {fileID: 162584487599433031, guid: 39f852c28f9c3fd45a427c24f3564ba7, type: 3}
-  enemyAtm: {fileID: 6388477405548209976, guid: 1866e40b264477a4b81aae5a4e2274f7, type: 3}
-  playerAtm: {fileID: -7062892827263370190, guid: 3d071e6f629bea7459298e0f16ec6af4, type: 3}
+  player: {fileID: 2878432253606566071, guid: 3d071e6f629bea7459298e0f16ec6af4, type: 3}
   collided: 0

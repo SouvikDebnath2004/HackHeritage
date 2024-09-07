@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 2390380144647371089}
   - component: {fileID: 4124478707951223342}
   - component: {fileID: 920732207354738984}
-  - component: {fileID: 2986767139974094545}
   - component: {fileID: 1210514778229923150}
   - component: {fileID: 6388477405548209976}
   - component: {fileID: 1503261621406214915}
@@ -249,33 +248,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2986767139974094545
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8227983004004891452}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1210514778229923150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,8 +260,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213c2b2f7e2a9d64a896ea2b0c5fd1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyhealth: 100
+  currentEnemyHealth: 0
+  damage: 0
+  Basic: {fileID: 0}
+  FireBullet: {fileID: 4215413964839734063, guid: 4071bbd291fb70041b54801020372642, type: 3}
   agent: {fileID: 1503261621406214915}
-  player: {fileID: 0}
+  player: {fileID: 2878432253606566078, guid: 3d071e6f629bea7459298e0f16ec6af4, type: 3}
   projectile: {fileID: 8073065561944026709, guid: e753efe834f5f33458f334d9d18b7409, type: 3}
   whatIsGound:
     serializedVersion: 2
@@ -335,7 +312,7 @@ NavMeshAgent:
   m_Speed: 60
   m_Acceleration: 15
   avoidancePriority: 50
-  m_AngularSpeed: 240
+  m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
