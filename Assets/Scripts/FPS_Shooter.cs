@@ -25,6 +25,7 @@ public class FPS_Shooter : MonoBehaviour
 
     public Camera camera; 
     public Transform CenterFirePoint;
+    public Transform lightningpoint;
     private float timeOfFire;
 
     
@@ -44,6 +45,11 @@ public class FPS_Shooter : MonoBehaviour
             timeOfFire = Time.time + 1 / fireRate;
             shootProjectiles();
         }
+        if (Input.GetButton("Fire2") && Time.time >= timeOfFire)
+        {
+            Lightning();
+        }
+
 
         if (currenthealth < 0)
         {
@@ -95,6 +101,15 @@ public class FPS_Shooter : MonoBehaviour
             timeOfFire = Time.time + 1 / fireRate;
             shootProjectiles();
         }        
+    }
+
+    public void Lightning()
+    {
+        if (Time.time >= timeOfFire)
+        {
+            timeOfFire = Time.time + 1 / fireRate;
+            var projectileObj1 = Instantiate(Attack[1], lightningpoint.position, Quaternion.identity) as GameObject;
+        }
     }
 
 }

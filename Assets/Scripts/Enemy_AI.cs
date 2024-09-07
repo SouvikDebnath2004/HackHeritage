@@ -2,20 +2,23 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class Enemy_AI : MonoBehaviour
 {
-    [SerializeField]public float enemyhealth = 100f;
+    [SerializeField]public float enemyhealth = 100f;    
     public float currentEnemyHealth = 0f;
     public int attack = 15;
     public float damage;
     public FPS_Shooter Basic;
     public Projectile FireBullet;
+    [SerializeField] private Image enemyHealthImg;
 
-       
+
     public NavMeshAgent agent;
     public Transform player;
     public GameObject projectile;
+    public GameObject LightningAttack;
 
     public LayerMask whatIsGound, whatIsPlayer;
 
@@ -62,7 +65,17 @@ public class Enemy_AI : MonoBehaviour
             Debug.Log("Enemy Died");
             Destroy(this.gameObject);
         }
+        else
+        {
+            UpdateHealthBar(enemyhealth, currentEnemyHealth);
+            Debug.Log("Current" + currentEnemyHealth);
+        }
 
+    }
+
+    public void UpdateHealthBar(float health, float currenthealth)
+    {
+        enemyHealthImg.fillAmount = currenthealth / health;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -134,4 +147,5 @@ public class Enemy_AI : MonoBehaviour
         Destroy(bulletRigidbody, 5f);
        
     }
+   
 }
