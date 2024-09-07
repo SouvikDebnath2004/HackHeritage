@@ -66,6 +66,11 @@ public class FPS_Shooter : MonoBehaviour
     {
         currenthealth = currenthealth - enemyDmg;
     }
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("Flamethrower Hit");
+        currenthealth = currenthealth - enemyDmg;
+    }
 
 
 
@@ -111,5 +116,6 @@ public class FPS_Shooter : MonoBehaviour
             var projectileObj1 = Instantiate(Attack[1], lightningpoint.position, Quaternion.identity) as GameObject;
         }
     }
+
 
 }
