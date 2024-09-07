@@ -27464,7 +27464,8 @@ Transform:
   m_LocalPosition: {x: -8.99, y: 0, z: 17.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1421349375}
   m_Father: {fileID: 899678826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &769510280
@@ -32515,7 +32516,6 @@ Transform:
   - {fileID: 1193685894}
   - {fileID: 2075720461}
   - {fileID: 1370567496}
-  - {fileID: 1421349375}
   - {fileID: 1462861638}
   - {fileID: 733559878}
   - {fileID: 1287537570}
@@ -36875,6 +36875,7 @@ GameObject:
   - component: {fileID: 1193685897}
   - component: {fileID: 1193685896}
   - component: {fileID: 1193685895}
+  - component: {fileID: 1193685899}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -37557,6 +37558,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &1193685899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193685893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boneShape: 1
+  drawBones: 1
+  drawTripods: 0
+  boneSize: 1
+  tripodSize: 1
+  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  m_Transforms:
+  - {fileID: 1193685894}
 --- !u!1 &1194836236
 GameObject:
   m_ObjectHideFlags: 0
@@ -51723,11 +51744,11 @@ Transform:
   m_GameObject: {fileID: 1421349374}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.75, y: 0, z: 5}
+  m_LocalPosition: {x: -8.76, y: 0, z: -12.799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 899678826}
+  m_Father: {fileID: 769510279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1421349376
 MeshCollider:
@@ -68465,5 +68486,5 @@ SceneRoots:
   - {fileID: 899678826}
   - {fileID: 1787388933}
   - {fileID: 517348986}
-  - {fileID: 1818417779}
   - {fileID: 2118045146}
+  - {fileID: 1818417779}
