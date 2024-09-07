@@ -7,17 +7,19 @@ using UnityEngine.UI;
 
 public class FPS_Shooter : MonoBehaviour
 {
-    public int health;
-    public int attackDamage;
-    private int currenthealth;
+    [SerializeField] public float health = 500f;
+    [SerializeField] public float damageBasic = 30f;
+    public float currenthealth = 0f ;
+    public int basicDamage = 30;
 
-    public AttributesManager enemyAtm;
-    public AttributesManager playerAtm;
+    public Enemy_AI attackDmg;
+    private int enemyDmg;
 
     private Vector3 destination;
 
     [SerializeField] private Image healthImg;
     [SerializeField] public GameObject[] Attack;
+    [SerializeField] public GameObject died;
     [SerializeField] public float projectileSpeed = 1.0f;
     [SerializeField] public float fireRate = 3f;
 
@@ -25,10 +27,13 @@ public class FPS_Shooter : MonoBehaviour
     public Transform CenterFirePoint;
     private float timeOfFire;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        currenthealth = health;
+        enemyDmg = attackDmg.attack; 
     }
 
     // Update is called once per frame
@@ -39,34 +44,28 @@ public class FPS_Shooter : MonoBehaviour
             timeOfFire = Time.time + 1 / fireRate;
             shootProjectiles();
         }
-    }
 
-    public void UpdateHealthBar(float health, float currenthealth)
-    {
-        healthImg.fillAmount = currenthealth / health;
-    }
-
-    public void TakeDamage(int amount)
-    {
-        currenthealth =health - amount;
-        if(currenthealth < 0)
+        if (currenthealth < 0)
         {
-            Destroy(this.gameObject);
+            died.SetActive(true);
+            Debug.Log("You Died");
         }
         else
         {
             UpdateHealthBar(health, currenthealth);
-            Debug.Log("Current" +currenthealth);
+            Debug.Log("Current" + currenthealth);
         }
     }
-
-    public void DealDamage(GameObject target)
+    private void OnCollisionEnter(Collision collision)
     {
-        var atm = target.GetComponent<AttributesManager>();
-        if (atm != null)
-        {
-            atm.TakeDamage(attackDamage);
-        }
+        currenthealth = currenthealth - enemyDmg;
+    }
+
+
+
+    public void UpdateHealthBar(float health, float currenthealth)
+    {
+        healthImg.fillAmount = currenthealth / health;
     }
 
     void shootProjectiles()
@@ -80,7 +79,7 @@ public class FPS_Shooter : MonoBehaviour
             destination = ray.GetPoint(1000);
 
         InstantiateProjectile(CenterFirePoint);
-        playerAtm.DealDamage(enemyAtm.gameObject);
+       // playerAtm.DealDamage(enemyAtm.gameObject);
     }
 
     private void InstantiateProjectile(Transform firePoint)

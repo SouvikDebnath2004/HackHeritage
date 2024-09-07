@@ -5,7 +5,14 @@ using Random = UnityEngine.Random;
 
 public class Enemy_AI : MonoBehaviour
 {
-   
+    [SerializeField]public float enemyhealth = 100f;
+    public float currentEnemyHealth = 0f;
+    public int attack = 15;
+    public float damage;
+    public FPS_Shooter Basic;
+    public Projectile FireBullet;
+
+       
     public NavMeshAgent agent;
     public Transform player;
     public GameObject projectile;
@@ -32,12 +39,14 @@ public class Enemy_AI : MonoBehaviour
 
     private void Awake()
     {
+        damage = Basic.damageBasic;
+        currentEnemyHealth = enemyhealth;
         player = GameObject.Find("FirstPersonController").transform;
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();   
     }
 
     private void Update()
-    {
+    {      
         // In Sight or Attack Range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -45,6 +54,24 @@ public class Enemy_AI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+        
+            
+        if(currentEnemyHealth<=0)
+        {
+            Debug.Log("Enemy Died");
+            Destroy(this.gameObject);
+        }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision != null)
+        {
+            currentEnemyHealth =  currentEnemyHealth - damage;
+            Debug.Log("Enemy Health = " + currentEnemyHealth);
+        }
     }
 
     private void Patroling()
